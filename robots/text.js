@@ -28,7 +28,7 @@ async function robot(content) {
 	    content.sourceContentSanitized = withoutDatesInParentheses
 	    //Ver Texto Ajustado
 	    //console.log(withoutDatesInParentheses)
-	    console.log(content.sourceContentSanitized)
+	    //console.log(content.sourceContentSanitized)
 	    function removeBlankLinesAndMarkdown(text) {
 	      	const allLines = text.split('\n')
 
@@ -49,6 +49,9 @@ async function robot(content) {
   	}
 
   	function breakContentIntoSentences(content) {
+  		content.sentences = []
+
+  		const sentences = sentenceBoundaryDetection.sentences(content.sourceContentSanitized)
   		sentences.forEach((sentence) => {
       		content.sentences.push({
         		text: sentence,
